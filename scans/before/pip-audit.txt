@@ -1,0 +1,14 @@
+Name       Version ID                  Fix Versions
+---------- ------- ------------------- ------------
+filelock   3.32.3  CVE-2026-112940     4.2.1
+filelock   3.32.3  CVE-2026-112913     4.2.1
+filelock   3.32.3  CVE-2026-112907     4.2.1
+setuptools 78.1.0  PYSEC-2025-49       78.1.1
+setuptools 78.1.0  PYSEC-2025-49       78.1.1
+setuptools 78.1.0  PYSEC-2026-3447     83.0.0
+setuptools 78.1.0  PYSEC-2026-3447     83.0.0
+setuptools 78.1.0  GHSA-xmj3-9gf7-h52w 84.1.0
+
+Name  Skip Reason
+----- -------------------------------------------------------------------------
+torch Dependency not found on PyPI and could not be audited: torch (2.14.1+cpu)

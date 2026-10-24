@@ -1,0 +1,40 @@
+                   
+                   
+┌─────────────────┐
+│ 4 Code Findings │
+└─────────────────┘
+                                  
+  [36m[22m[24m  src/evaluate.py[0m
+   ❯❯❱ [1mtrailofbits.python.pickles-in-pytorch.pickles-in-pytorch[0m
+          [31m[1m[24m❰❰ Blocking ❱❱[0m
+          Functions reliant on pickle can result in arbitrary code execution.  Consider loading from
+          `state_dict`, using fickling, or switching to a safer serialization method like ONNX      
+          Details: https://sg.run/NwQy                                                              
+                                                                                                    
+           29┆ model = torch.load(path, weights_only=False)
+   
+   ❯❯❱ [1mtrailofbits.python.pickles-in-numpy.pickles-in-numpy[0m
+          [31m[1m[24m❰❰ Blocking ❱❱[0m
+          Functions reliant on pickle can result in arbitrary code execution.  Consider using fickling or
+          switching to a safer serialization method                                                      
+          Details: https://sg.run/ryKe                                                                   
+                                                                                                         
+          149┆ arrays = np.load(args.data, allow_pickle=True)
+                               
+  [36m[22m[24m  src/train.py[0m
+    ❯❱ [1mtrailofbits.python.automatic-memory-pinning.automatic-memory-pinning[0m
+          [31m[1m[24m❰❰ Blocking ❱❱[0m
+          If possible, it is better to rely on automatic pinning in PyTorch to avoid undefined behavior and
+          for efficiency                                                                                   
+          Details: https://sg.run/jz5N                                                                     
+                                                                                                           
+           41┆ loader = DataLoader(TensorDataset(torch.from_numpy(x_train), torch.from_numpy(y_train)),
+           42┆                     batch_size=batch_size, shuffle=True, generator=generator)
+   
+   ❯❯❱ [1mtrailofbits.python.pickles-in-pytorch.pickles-in-pytorch[0m
+          [31m[1m[24m❰❰ Blocking ❱❱[0m
+          Functions reliant on pickle can result in arbitrary code execution.  Consider loading from
+          `state_dict`, using fickling, or switching to a safer serialization method like ONNX      
+          Details: https://sg.run/NwQy                                                              
+                                                                                                    
+          110┆ torch.save(model, model_path)
