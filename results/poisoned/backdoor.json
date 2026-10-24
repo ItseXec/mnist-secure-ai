@@ -1,0 +1,24 @@
+{
+  "attacker_model": "training-time, controls a share of training data, no model access",
+  "poison_rate": 0.05,
+  "poisoned_images": 2750,
+  "target_digit": 9,
+  "trigger": "4-pixel pattern near bottom-right corner (ART add_pattern_bd)",
+  "clean_test_accuracy": 0.991,
+  "validation_accuracy_final_epoch": 0.9912,
+  "attack_success_rate": 0.9994,
+  "attack_success_rate_per_source_digit": {
+    "0": 1.0,
+    "1": 0.9991,
+    "2": 0.999,
+    "3": 1.0,
+    "4": 0.9969,
+    "5": 1.0,
+    "6": 1.0,
+    "7": 1.0,
+    "8": 1.0
+  },
+  "control_baseline_attack_success_rate": 0.0008,
+  "poisoned_train_sha256": "778216425f3c4f1a62647e64c406562f7d253f733df56012343a11403be5a730",
+  "model_sha256": "11b0a735c70da89a9f243eec7e358b2897a0f7f2b3b257efc4014a4d3bf03d96"
+}

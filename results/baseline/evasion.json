@@ -1,0 +1,114 @@
+{
+  "model": "models/baseline.pt",
+  "attacker_model": "white-box, inference-time, L-inf, untargeted",
+  "sweep": {
+    "FGSM": [
+      {
+        "eps": 0.0,
+        "accuracy": 0.9909,
+        "attack_success_rate": 0.0,
+        "max_pixel_change": 0.0,
+        "seconds": 1.4
+      },
+      {
+        "eps": 0.05,
+        "accuracy": 0.9627,
+        "attack_success_rate": 0.0285,
+        "max_pixel_change": 0.05,
+        "seconds": 5.0
+      },
+      {
+        "eps": 0.1,
+        "accuracy": 0.8802,
+        "attack_success_rate": 0.1117,
+        "max_pixel_change": 0.1,
+        "seconds": 4.7
+      },
+      {
+        "eps": 0.15,
+        "accuracy": 0.6942,
+        "attack_success_rate": 0.2994,
+        "max_pixel_change": 0.15,
+        "seconds": 4.6
+      },
+      {
+        "eps": 0.2,
+        "accuracy": 0.416,
+        "attack_success_rate": 0.5802,
+        "max_pixel_change": 0.2,
+        "seconds": 4.8
+      },
+      {
+        "eps": 0.25,
+        "accuracy": 0.2004,
+        "attack_success_rate": 0.7978,
+        "max_pixel_change": 0.25,
+        "seconds": 4.6
+      },
+      {
+        "eps": 0.3,
+        "accuracy": 0.1029,
+        "attack_success_rate": 0.8962,
+        "max_pixel_change": 0.3,
+        "seconds": 4.8
+      }
+    ],
+    "PGD (20 steps)": [
+      {
+        "eps": 0.0,
+        "accuracy": 0.9909,
+        "attack_success_rate": 0.0,
+        "max_pixel_change": 0.0,
+        "seconds": 1.5
+      },
+      {
+        "eps": 0.05,
+        "accuracy": 0.9502,
+        "attack_success_rate": 0.0411,
+        "max_pixel_change": 0.05,
+        "seconds": 75.2
+      },
+      {
+        "eps": 0.1,
+        "accuracy": 0.7527,
+        "attack_success_rate": 0.2404,
+        "max_pixel_change": 0.1,
+        "seconds": 73.6
+      },
+      {
+        "eps": 0.15,
+        "accuracy": 0.2357,
+        "attack_success_rate": 0.7621,
+        "max_pixel_change": 0.15,
+        "seconds": 73.8
+      },
+      {
+        "eps": 0.2,
+        "accuracy": 0.014,
+        "attack_success_rate": 0.9859,
+        "max_pixel_change": 0.2,
+        "seconds": 77.8
+      },
+      {
+        "eps": 0.25,
+        "accuracy": 0.0,
+        "attack_success_rate": 1.0,
+        "max_pixel_change": 0.25,
+        "seconds": 72.4
+      },
+      {
+        "eps": 0.3,
+        "accuracy": 0.0,
+        "attack_success_rate": 1.0,
+        "max_pixel_change": 0.3,
+        "seconds": 80.2
+      }
+    ]
+  },
+  "saved_datasets_sha256": {
+    "fgsm_eps0.10": "1cec3c2ce74a78083fae30a7737d2a55174af5084a7db6320ffb2cf95cadec75",
+    "fgsm_eps0.30": "70e01badf2302adae6033d546dc68e4a52f26a565dcf658b267dc6ad9430490a",
+    "pgd_eps0.10": "688b30b9a0a1c7dd5dfc71271abc707fd70f6f0b9767d25f7f084431daf260fa",
+    "pgd_eps0.30": "4459db4944c6c531e5da7eb46d74acce83a2724867de739e063f2537b49cc17a"
+  }
+}
