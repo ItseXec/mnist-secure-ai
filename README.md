@@ -13,7 +13,7 @@ Machine Learning Top 10 attacks, and defended.
 | 4 SAST findings and fixes | `docs/SAST.md`, `scans/`, `tests/test_security.py` |
 | 5 Attacks: evasion (ML01) and backdoor poisoning (ML02) | `attacks/` |
 | 6 Retest with adversarial and poisoned data | `results/baseline_*`, `results/poisoned*` |
-| 7 Defenses compared with the baseline | `defenses/`, `results/comparison.md` |
+| 7 Defenses compared with the baseline | `defenses/`, `results/comparison.md`, `results/blue_team.log` |
 
 ## Setup
 
@@ -63,6 +63,9 @@ python -m attacks.evasion --model models/adv_pgd.pt --tag adv_pgd
 # Is the defended model's robustness real? Gradient-masking checks (about 8 minutes)
 python -m attacks.robustness_checks --model models/adv_pgd.pt --tag adv_pgd
 
+# Inference time for all models, measured together (about 2 minutes)
+python -m scripts.timing
+
 # Final comparison table and charts
 python -m scripts.compare
 ```
@@ -101,7 +104,7 @@ src/        model, data loading with integrity checks, training, evaluation
 attacks/    evasion (ART FGSM and PGD), backdoor poisoning (ART BadNets),
             gradient-masking checks (stronger PGD, Square Attack)
 defenses/   adversarial training (static and PGD) and activation clustering
-scripts/    final comparison
+scripts/    inference timing of all models together, final comparison
 tests/      security tests proving each SAST fix works
 docs/       THREAT_MODEL.md, SAST.md
 scans/      raw Bandit, Semgrep and pip-audit output, before and after fixes

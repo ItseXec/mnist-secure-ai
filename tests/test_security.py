@@ -5,7 +5,12 @@
 Each test shows a fix doing its job, not just the scanner going quiet.
 """
 
+import gzip
+import importlib.machinery
+import importlib.util
 import os
+import py_compile
+import struct
 
 import numpy as np
 import pytest
@@ -121,6 +126,46 @@ def test_tampered_mnist_file_is_rejected(tmp_path, monkeypatch):
         fh.write(b"not the real file")
     with pytest.raises(IntegrityError):
         data.download()
+
+
+# ---- B101: assert used for validation
+
+
+def _import_as_python_O_would(module_name, source_path, tmp_path):
+    """Import a module compiled exactly as `python -O` compiles it (asserts removed)."""
+    pyc = py_compile.compile(source_path, cfile=str(tmp_path / f"{module_name}.pyc"),
+                             optimize=1, doraise=True)
+    loader = importlib.machinery.SourcelessFileLoader(module_name, pyc)
+    module = importlib.util.module_from_spec(importlib.util.spec_from_loader(module_name, loader))
+    loader.exec_module(module)
+    return module
+
+
+def _gzip_file(path, payload):
+    with gzip.open(path, "wb") as fh:
+        fh.write(payload)
+    return str(path)
+
+
+def test_v1_style_assert_check_vanishes_under_python_O(tmp_path):
+    """Why B101 matters: the version 1 header check is deleted by `python -O`."""
+    source = tmp_path / "v1_check.py"
+    source.write_text("def check_label_header(magic):\n"
+                      "    assert magic == 2049, 'not an MNIST label file'\n"
+                      "    return 'accepted'\n")
+    v1 = _import_as_python_O_would("v1_check", str(source), tmp_path)
+    assert v1.check_label_header(1234) == "accepted"   # a bad header gets through
+
+
+@pytest.mark.parametrize("payload", [
+    struct.pack(">II", 1234, 3) + bytes([1, 2, 3]),    # wrong magic number
+    struct.pack(">II", 2049, 5) + bytes([1, 2, 3]),    # count does not match the data
+    struct.pack(">II", 2049, 3) + bytes([1, 2, 10]),   # label outside 0-9
+])
+def test_fixed_header_checks_still_run_under_python_O(tmp_path, payload):
+    fixed = _import_as_python_O_would("src._data_optimised", data.__file__, tmp_path)
+    with pytest.raises(IntegrityError):
+        fixed._read_labels(_gzip_file(tmp_path / "labels.gz", payload), expected_count=3)
 
 
 # ---- Untrusted datasets (np.load allow_pickle=True in version 1)

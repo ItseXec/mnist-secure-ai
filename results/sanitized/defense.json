@@ -1,0 +1,163 @@
+{
+  "method": "activation clustering (Chen et al. 2018) via ART ActivationDefence",
+  "layer": "hidden",
+  "cluster_analysis": "relative-size",
+  "detection": {
+    "flagged": 2624,
+    "true_positives": 2622,
+    "false_positives": 2,
+    "false_negatives": 128,
+    "precision": 0.9992,
+    "recall": 0.9535,
+    "flagged_per_class": {
+      "0": 0,
+      "1": 0,
+      "2": 0,
+      "3": 0,
+      "4": 0,
+      "5": 0,
+      "6": 0,
+      "7": 0,
+      "8": 0,
+      "9": 2624
+    }
+  },
+  "comparison": {
+    "hidden/relative-size": {
+      "flagged": 2624,
+      "true_positives": 2622,
+      "false_positives": 2,
+      "false_negatives": 128,
+      "precision": 0.9992,
+      "recall": 0.9535,
+      "flagged_per_class": {
+        "0": 0,
+        "1": 0,
+        "2": 0,
+        "3": 0,
+        "4": 0,
+        "5": 0,
+        "6": 0,
+        "7": 0,
+        "8": 0,
+        "9": 2624
+      }
+    },
+    "hidden/smaller": {
+      "flagged": 23739,
+      "true_positives": 2622,
+      "false_positives": 21117,
+      "false_negatives": 128,
+      "precision": 0.1105,
+      "recall": 0.9535,
+      "flagged_per_class": {
+        "0": 2536,
+        "1": 2758,
+        "2": 2320,
+        "3": 2596,
+        "4": 1961,
+        "5": 1980,
+        "6": 2439,
+        "7": 2068,
+        "8": 2457,
+        "9": 2624
+      }
+    },
+    "hidden/silhouette-scores": {
+      "flagged": 8219,
+      "true_positives": 2750,
+      "false_positives": 5469,
+      "false_negatives": 0,
+      "precision": 0.3346,
+      "recall": 1.0,
+      "flagged_per_class": {
+        "0": 0,
+        "1": 0,
+        "2": 0,
+        "3": 0,
+        "4": 0,
+        "5": 0,
+        "6": 0,
+        "7": 0,
+        "8": 0,
+        "9": 8219
+      }
+    },
+    "output/relative-size": {
+      "flagged": 5951,
+      "true_positives": 2346,
+      "false_positives": 3605,
+      "false_negatives": 404,
+      "precision": 0.3942,
+      "recall": 0.8531,
+      "flagged_per_class": {
+        "0": 0,
+        "1": 0,
+        "2": 0,
+        "3": 0,
+        "4": 1736,
+        "5": 0,
+        "6": 0,
+        "7": 1854,
+        "8": 0,
+        "9": 2361
+      }
+    },
+    "output/smaller": {
+      "flagged": 22111,
+      "true_positives": 2346,
+      "false_positives": 19765,
+      "false_negatives": 404,
+      "precision": 0.1061,
+      "recall": 0.8531,
+      "flagged_per_class": {
+        "0": 2230,
+        "1": 2566,
+        "2": 2430,
+        "3": 2419,
+        "4": 1698,
+        "5": 1981,
+        "6": 2212,
+        "7": 1855,
+        "8": 2359,
+        "9": 2361
+      }
+    },
+    "output/silhouette-scores": {
+      "flagged": 13661,
+      "true_positives": 2750,
+      "false_positives": 10911,
+      "false_negatives": 0,
+      "precision": 0.2013,
+      "recall": 1.0,
+      "flagged_per_class": {
+        "0": 0,
+        "1": 0,
+        "2": 0,
+        "3": 0,
+        "4": 0,
+        "5": 0,
+        "6": 0,
+        "7": 5442,
+        "8": 0,
+        "9": 8219
+      }
+    }
+  },
+  "retrained_on": 52376,
+  "removed": 2624,
+  "clean_test_accuracy": 0.9891,
+  "attack_success_rate_after": 0.0018,
+  "attack_success_rate_per_source_digit": {
+    "0": 0.002,
+    "1": 0.0,
+    "2": 0.0,
+    "3": 0.0,
+    "4": 0.0071,
+    "5": 0.0022,
+    "6": 0.0,
+    "7": 0.001,
+    "8": 0.0041
+  },
+  "model_sha256": "085ebe7ec94476086455a1083756b2f7246469129ed4eaced2917cc8b803be46"
+}

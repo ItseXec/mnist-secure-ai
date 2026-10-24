@@ -1,0 +1,102 @@
+hidden relative-size     flagged  2624  precision 0.999  recall 0.954
+hidden smaller           flagged 23739  precision 0.111  recall 0.954
+hidden silhouette-scores flagged  8219  precision 0.335  recall 1.000
+output relative-size     flagged  5951  precision 0.394  recall 0.853
+output smaller           flagged 22111  precision 0.106  recall 0.853
+output silhouette-scores flagged 13661  precision 0.201  recall 1.000
+
+Chosen (hidden layer, relative-size): flagged 2624 images, precision 0.9992, recall 0.9535
+Retraining on 52376 images (2624 removed) ...
+epoch 1/5  train_loss 0.2233  train_acc 0.9335  val_loss 0.0793  val_acc 0.9754  (13.8s)
+epoch 2/5  train_loss 0.0793  train_acc 0.9773  val_loss 0.0529  val_acc 0.9834  (13.6s)
+epoch 3/5  train_loss 0.0595  train_acc 0.9836  val_loss 0.0476  val_acc 0.9860  (13.5s)
+epoch 4/5  train_loss 0.0509  train_acc 0.9858  val_loss 0.0358  val_acc 0.9892  (13.7s)
+epoch 5/5  train_loss 0.0414  train_acc 0.9882  val_loss 0.0411  val_acc 0.9882  (13.5s)
+
+After sanitising: clean accuracy 0.9891 | backdoor success 0.0018
+Generating FGSM (eps 0.3) copies of 55000 training images against the baseline ...
+Training on 110000 images (clean + adversarial)
+epoch 1/5  train_loss 0.2286  train_acc 0.9303  val_loss 0.0927  val_acc 0.9702  (29.8s)
+epoch 2/5  train_loss 0.0626  train_acc 0.9805  val_loss 0.0549  val_acc 0.9832  (28.3s)
+epoch 3/5  train_loss 0.0401  train_acc 0.9877  val_loss 0.0475  val_acc 0.9854  (27.8s)
+epoch 4/5  train_loss 0.0293  train_acc 0.9909  val_loss 0.0406  val_acc 0.9864  (28.0s)
+epoch 5/5  train_loss 0.0242  train_acc 0.9922  val_loss 0.0467  val_acc 0.9864  (29.6s)
+Saved /home/satyasheel/Desktop/SSE_Assn/mnist-secure-ai/models/adv_static.pt (training took 164s); clean test accuracy 0.9880
+Next: python -m attacks.evasion --model /home/satyasheel/Desktop/SSE_Assn/mnist-secure-ai/models/adv_static.pt --tag adv_static
+PGD adversarial training: eps 0.3, 7 steps, 50% of each batch adversarial, 8 epochs
+epoch 1/8  train_loss 1.0048  val_acc 0.9628  val_pgd_acc(eps 0.3) 0.5440  (72.4s)
+epoch 2/8  train_loss 0.5838  val_acc 0.9718  val_pgd_acc(eps 0.3) 0.6940  (77.5s)
+epoch 3/8  train_loss 0.4452  val_acc 0.9738  val_pgd_acc(eps 0.3) 0.7540  (70.3s)
+epoch 4/8  train_loss 0.3606  val_acc 0.9774  val_pgd_acc(eps 0.3) 0.7930  (69.6s)
+epoch 5/8  train_loss 0.2999  val_acc 0.9798  val_pgd_acc(eps 0.3) 0.8370  (69.5s)
+epoch 6/8  train_loss 0.2505  val_acc 0.9808  val_pgd_acc(eps 0.3) 0.8640  (69.6s)
+epoch 7/8  train_loss 0.2076  val_acc 0.9818  val_pgd_acc(eps 0.3) 0.8940  (72.1s)
+epoch 8/8  train_loss 0.1848  val_acc 0.9842  val_pgd_acc(eps 0.3) 0.9010  (69.8s)
+Saved /home/satyasheel/Desktop/SSE_Assn/mnist-secure-ai/models/adv_pgd.pt (training took 572s); clean test accuracy 0.9854
+Next: python -m attacks.evasion --model /home/satyasheel/Desktop/SSE_Assn/mnist-secure-ai/models/adv_pgd.pt --tag adv_pgd
+FGSM             eps 0.00  accuracy 0.9880  success 0.0000  max change 0.000  (1.5s)
+FGSM             eps 0.05  accuracy 0.8926  success 0.0966  max change 0.050  (5.1s)
+FGSM             eps 0.10  accuracy 0.5703  success 0.4228  max change 0.100  (5.3s)
+FGSM             eps 0.15  accuracy 0.2739  success 0.7228  max change 0.150  (5.1s)
+FGSM             eps 0.20  accuracy 0.1292  success 0.8692  max change 0.200  (5.5s)
+FGSM             eps 0.25  accuracy 0.0692  success 0.9300  max change 0.250  (5.5s)
+FGSM             eps 0.30  accuracy 0.0387  success 0.9608  max change 0.300  (5.5s)
+PGD (20 steps)   eps 0.00  accuracy 0.9880  success 0.0000  max change 0.000  (1.4s)
+PGD (20 steps)   eps 0.05  accuracy 0.7908  success 0.1996  max change 0.050  (85.3s)
+PGD (20 steps)   eps 0.10  accuracy 0.0937  success 0.9052  max change 0.100  (87.1s)
+PGD (20 steps)   eps 0.15  accuracy 0.0011  success 0.9989  max change 0.150  (85.2s)
+PGD (20 steps)   eps 0.20  accuracy 0.0000  success 1.0000  max change 0.200  (86.1s)
+PGD (20 steps)   eps 0.25  accuracy 0.0000  success 1.0000  max change 0.250  (86.5s)
+PGD (20 steps)   eps 0.30  accuracy 0.0000  success 1.0000  max change 0.300  (85.7s)
+Saved results to /home/satyasheel/Desktop/SSE_Assn/mnist-secure-ai/results/adv_static and adversarial test sets to /home/satyasheel/Desktop/SSE_Assn/mnist-secure-ai/datasets
+FGSM             eps 0.00  accuracy 0.9854  success 0.0000  max change 0.000  (1.5s)
+FGSM             eps 0.05  accuracy 0.9729  success 0.0127  max change 0.050  (5.1s)
+FGSM             eps 0.10  accuracy 0.9656  success 0.0201  max change 0.100  (5.3s)
+FGSM             eps 0.15  accuracy 0.9596  success 0.0262  max change 0.150  (5.2s)
+FGSM             eps 0.20  accuracy 0.9533  success 0.0326  max change 0.200  (5.5s)
+FGSM             eps 0.25  accuracy 0.9469  success 0.0391  max change 0.250  (5.5s)
+FGSM             eps 0.30  accuracy 0.9402  success 0.0459  max change 0.300  (5.3s)
+PGD (20 steps)   eps 0.00  accuracy 0.9854  success 0.0000  max change 0.000  (1.3s)
+PGD (20 steps)   eps 0.05  accuracy 0.9701  success 0.0155  max change 0.050  (83.8s)
+PGD (20 steps)   eps 0.10  accuracy 0.9593  success 0.0265  max change 0.100  (83.5s)
+PGD (20 steps)   eps 0.15  accuracy 0.9497  success 0.0362  max change 0.150  (82.8s)
+PGD (20 steps)   eps 0.20  accuracy 0.9372  success 0.0489  max change 0.200  (84.4s)
+PGD (20 steps)   eps 0.25  accuracy 0.9230  success 0.0633  max change 0.250  (102.2s)
+PGD (20 steps)   eps 0.30  accuracy 0.9034  success 0.0832  max change 0.300  (83.9s)
+Saved results to /home/satyasheel/Desktop/SSE_Assn/mnist-secure-ai/results/adv_pgd and adversarial test sets to /home/satyasheel/Desktop/SSE_Assn/mnist-secure-ai/datasets
+clean                                                      accuracy 0.9820  (0.2s)
+PGD 20 steps, 1 start, eps 0.3 (main evaluation)           accuracy 0.8890  (8.4s)
+PGD 100 steps, 5 starts, eps 0.3 (check 1)                 accuracy 0.8670  (220.5s)
+Square Attack, black-box, eps 0.3 (check 2)                accuracy 0.8330  (426.8s)
+PGD 50 steps, eps 0.5 (check 3)                            accuracy 0.0000  (21.6s)
+check_1_stronger_pgd_within_5_points               PASS
+check_2_black_box_not_stronger_than_white_box      FAIL
+check_3_large_eps_drives_accuracy_below_10pct      PASS
+signs_of_gradient_masking                          True
+worst-case accuracy at eps 0.3 over all attacks: 0.8330 (main 20-step PGD figure on the same images: 0.8890)
+Saved /home/satyasheel/Desktop/SSE_Assn/mnist-secure-ai/results/adv_pgd/robustness_checks.json
+| Model | Clean accuracy | FGSM ε=0.1 | FGSM ε=0.3 | PGD ε=0.1 | PGD ε=0.3 | Baseline's PGD ε=0.3 images (transfer) | Backdoor success | ms / image |
+|---|---|---|---|---|---|---|---|---|
+| Baseline | 99.09% | 88.02% | 10.29% | 75.27% | 0.00% | 0.00% | 0.08% | 0.37 |
+| Poisoned (5%) | 99.10% | — | — | — | — | 0.00% | 99.94% | 0.248 |
+| Poison removed | 98.91% | — | — | — | — | 1.38% | 0.18% | 0.243 |
+| Adv. trained (static FGSM) | 98.80% | 57.03% | 3.87% | 9.37% | 0.00% | 90.05% | — | 0.255 |
+| Adv. trained (PGD) | 98.54% | 96.56% | 94.02% | 95.93% | 90.34% | 95.19% | — | 0.416 |
+
+White-box columns (FGSM, PGD) attack each model with its own gradients. The transfer column replays the adversarial images made against the baseline. Backdoor success is the share of triggered non-target digits classified as the target; for the baseline it is a control (same trigger, model never poisoned). '—' means not measured for that model.
+
+### Is the PGD-trained model's robustness real? (first 1000 test images, ε=0.3)
+
+| Attack | Accuracy |
+|---|---|
+| clean | 98.20% |
+| PGD 20 steps, 1 start, eps 0.3 (main evaluation) | 88.90% |
+| PGD 100 steps, 5 starts, eps 0.3 (check 1) | 86.70% |
+| Square Attack, black-box, eps 0.3 (check 2) | 83.30% |
+| PGD 50 steps, eps 0.5 (check 3) | 0.00% |
+
+Worst case over all attacks: **83.30%**. This, not the PGD figure, is the robust accuracy to report.
+
+
+Wrote /home/satyasheel/Desktop/SSE_Assn/mnist-secure-ai/results/comparison.md and two charts
+=== BLUE TEAM DONE

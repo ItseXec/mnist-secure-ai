@@ -1,0 +1,16 @@
+                   
+                   
+┌─────────────────┐
+│ 2 Code Findings │
+└─────────────────┘
+                                         
+  [36m[22m[24m  tests/test_security.py[0m
+   ❯❯❱ [1mtrailofbits.python.pickles-in-pytorch.pickles-in-pytorch[0m
+          [31m[1m[24m❰❰ Blocking ❱❱[0m
+          Functions reliant on pickle can result in arbitrary code execution.  Consider loading from
+          `state_dict`, using fickling, or switching to a safer serialization method like ONNX      
+          Details: https://sg.run/NwQy                                                              
+                                                                                                    
+           41┆ torch.save({"weights": _CreatesMarkerFile(marker)}, path)
+            ⋮┆----------------------------------------
+           53┆ torch.load(path, weights_only=False)  # nosec B614

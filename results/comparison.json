@@ -1,0 +1,72 @@
+[
+  {
+    "tag": "baseline",
+    "model": "Baseline",
+    "clean_accuracy": 0.9909,
+    "clean_loss": 0.0297,
+    "fgsm_0.1": 0.8802,
+    "fgsm_0.3": 0.1029,
+    "pgd_0.1": 0.7527,
+    "pgd_0.3": 0.0,
+    "transfer_pgd_0.3": 0.0,
+    "backdoor_success": 0.0008,
+    "latency_ms": 0.229,
+    "throughput": 9343.7
+  },
+  {
+    "tag": "poisoned",
+    "model": "Poisoned (5%)",
+    "clean_accuracy": 0.991,
+    "clean_loss": 0.0279,
+    "fgsm_0.1": null,
+    "fgsm_0.3": null,
+    "pgd_0.1": null,
+    "pgd_0.3": null,
+    "transfer_pgd_0.3": 0.0,
+    "backdoor_success": 0.9994,
+    "latency_ms": 0.233,
+    "throughput": 9293.0
+  },
+  {
+    "tag": "sanitized",
+    "model": "Poison removed",
+    "clean_accuracy": 0.9891,
+    "clean_loss": 0.0337,
+    "fgsm_0.1": null,
+    "fgsm_0.3": null,
+    "pgd_0.1": null,
+    "pgd_0.3": null,
+    "transfer_pgd_0.3": 0.0138,
+    "backdoor_success": 0.0018,
+    "latency_ms": 0.226,
+    "throughput": 8800.9
+  },
+  {
+    "tag": "adv_static",
+    "model": "Adv. trained (static FGSM)",
+    "clean_accuracy": 0.988,
+    "clean_loss": 0.0387,
+    "fgsm_0.1": 0.5703,
+    "fgsm_0.3": 0.0387,
+    "pgd_0.1": 0.0937,
+    "pgd_0.3": 0.0,
+    "transfer_pgd_0.3": 0.9005,
+    "backdoor_success": null,
+    "latency_ms": 0.226,
+    "throughput": 9239.8
+  },
+  {
+    "tag": "adv_pgd",
+    "model": "Adv. trained (PGD)",
+    "clean_accuracy": 0.9854,
+    "clean_loss": 0.0451,
+    "fgsm_0.1": 0.9656,
+    "fgsm_0.3": 0.9402,
+    "pgd_0.1": 0.9593,
+    "pgd_0.3": 0.9034,
+    "transfer_pgd_0.3": 0.9519,
+    "backdoor_success": null,
+    "latency_ms": 0.225,
+    "throughput": 8877.8
+  }
+]

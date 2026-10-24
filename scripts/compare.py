@@ -79,11 +79,14 @@ def backdoor_rate(tag):
 
 def main():
     rows = []
+    # Prefer timings measured for all models together (scripts/timing.py); fall
+    # back to the figure recorded when each model was evaluated.
+    shared = (read("inference_timing.json") or {}).get("per_model", {})
     for tag, label in MODELS:
         metrics = read(tag, "metrics.json")
         if metrics is None:
             continue
-        timing = metrics.get("inference_time", {})
+        timing = shared.get(tag) or metrics.get("inference_time", {})
         rows.append({
             "tag": tag, "model": label,
             "clean_accuracy": metrics["accuracy"], "clean_loss": metrics["loss"],
@@ -109,7 +112,11 @@ def main():
             "The transfer column replays the adversarial images made against the baseline. "
             "Backdoor success is the share of triggered non-target digits classified as the "
             "target; for the baseline it is a control (same trigger, model never poisoned). "
-            "'—' means not measured for that model.\n")
+            "'—' means not measured for that model. "
+            + ("ms / image: median single-image latency, all models timed together "
+               "(scripts/timing.py).\n" if shared else
+               "ms / image: as measured when each model was evaluated, so machine load "
+               "differs between rows; run scripts/timing.py for a like-for-like figure.\n"))
     checks = read("adv_pgd", "robustness_checks.json")
     if checks:
         note += (f"\n### Is the PGD-trained model's robustness real? "

@@ -1,0 +1,34 @@
+{
+  "model": "models/adv_pgd.pt",
+  "images": 1000,
+  "eps": 0.3,
+  "results": {
+    "clean": {
+      "accuracy": 0.982,
+      "seconds": 0.2
+    },
+    "PGD 20 steps, 1 start, eps 0.3 (main evaluation)": {
+      "accuracy": 0.889,
+      "seconds": 8.4
+    },
+    "PGD 100 steps, 5 starts, eps 0.3 (check 1)": {
+      "accuracy": 0.867,
+      "seconds": 220.5
+    },
+    "Square Attack, black-box, eps 0.3 (check 2)": {
+      "accuracy": 0.833,
+      "seconds": 426.8
+    },
+    "PGD 50 steps, eps 0.5 (check 3)": {
+      "accuracy": 0.0,
+      "seconds": 21.6
+    }
+  },
+  "verdicts": {
+    "check_1_stronger_pgd_within_5_points": true,
+    "check_2_black_box_not_stronger_than_white_box": false,
+    "check_3_large_eps_drives_accuracy_below_10pct": true,
+    "signs_of_gradient_masking": true
+  },
+  "worst_case_accuracy": 0.833
+}

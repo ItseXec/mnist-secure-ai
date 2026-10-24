@@ -1,0 +1,294 @@
+{
+  "rounds": 5,
+  "cpu_threads": 4,
+  "machine": "x86_64",
+  "per_model": {
+    "baseline": {
+      "single_image_ms_median": 0.229,
+      "single_image_ms_p95": 0.33,
+      "batch_throughput_images_per_s": 9343.7
+    },
+    "poisoned": {
+      "single_image_ms_median": 0.233,
+      "single_image_ms_p95": 0.377,
+      "batch_throughput_images_per_s": 9293.0
+    },
+    "sanitized": {
+      "single_image_ms_median": 0.226,
+      "single_image_ms_p95": 0.289,
+      "batch_throughput_images_per_s": 8800.9
+    },
+    "adv_static": {
+      "single_image_ms_median": 0.226,
+      "single_image_ms_p95": 0.29,
+      "batch_throughput_images_per_s": 9239.8
+    },
+    "adv_pgd": {
+      "single_image_ms_median": 0.225,
+      "single_image_ms_p95": 0.279,
+      "batch_throughput_images_per_s": 8877.8
+    }
+  },
+  "raw": {
+    "baseline": [
+      {
+        "single_image_ms_median": 0.222,
+        "single_image_ms_p95": 0.241,
+        "single_image_ms_mean": 0.223,
+        "batch_size": 256,
+        "batch_throughput_images_per_s": 9868.1,
+        "batch_ms_per_image": 0.1013,
+        "cpu_threads": 4,
+        "machine": "x86_64"
+      },
+      {
+        "single_image_ms_median": 0.223,
+        "single_image_ms_p95": 0.246,
+        "single_image_ms_mean": 0.224,
+        "batch_size": 256,
+        "batch_throughput_images_per_s": 8750.2,
+        "batch_ms_per_image": 0.1143,
+        "cpu_threads": 4,
+        "machine": "x86_64"
+      },
+      {
+        "single_image_ms_median": 0.289,
+        "single_image_ms_p95": 0.439,
+        "single_image_ms_mean": 0.371,
+        "batch_size": 256,
+        "batch_throughput_images_per_s": 9343.7,
+        "batch_ms_per_image": 0.107,
+        "cpu_threads": 4,
+        "machine": "x86_64"
+      },
+      {
+        "single_image_ms_median": 0.229,
+        "single_image_ms_p95": 0.33,
+        "single_image_ms_mean": 0.242,
+        "batch_size": 256,
+        "batch_throughput_images_per_s": 9459.3,
+        "batch_ms_per_image": 0.1057,
+        "cpu_threads": 4,
+        "machine": "x86_64"
+      },
+      {
+        "single_image_ms_median": 0.4,
+        "single_image_ms_p95": 0.489,
+        "single_image_ms_mean": 0.398,
+        "batch_size": 256,
+        "batch_throughput_images_per_s": 7145.8,
+        "batch_ms_per_image": 0.1399,
+        "cpu_threads": 4,
+        "machine": "x86_64"
+      }
+    ],
+    "poisoned": [
+      {
+        "single_image_ms_median": 0.223,
+        "single_image_ms_p95": 0.257,
+        "single_image_ms_mean": 0.225,
+        "batch_size": 256,
+        "batch_throughput_images_per_s": 9708.8,
+        "batch_ms_per_image": 0.103,
+        "cpu_threads": 4,
+        "machine": "x86_64"
+      },
+      {
+        "single_image_ms_median": 0.233,
+        "single_image_ms_p95": 0.377,
+        "single_image_ms_mean": 0.258,
+        "batch_size": 256,
+        "batch_throughput_images_per_s": 8974.8,
+        "batch_ms_per_image": 0.1114,
+        "cpu_threads": 4,
+        "machine": "x86_64"
+      },
+      {
+        "single_image_ms_median": 0.231,
+        "single_image_ms_p95": 0.432,
+        "single_image_ms_mean": 0.268,
+        "batch_size": 256,
+        "batch_throughput_images_per_s": 9335.9,
+        "batch_ms_per_image": 0.1071,
+        "cpu_threads": 4,
+        "machine": "x86_64"
+      },
+      {
+        "single_image_ms_median": 0.233,
+        "single_image_ms_p95": 0.343,
+        "single_image_ms_mean": 0.249,
+        "batch_size": 256,
+        "batch_throughput_images_per_s": 9293.0,
+        "batch_ms_per_image": 0.1076,
+        "cpu_threads": 4,
+        "machine": "x86_64"
+      },
+      {
+        "single_image_ms_median": 0.363,
+        "single_image_ms_p95": 0.532,
+        "single_image_ms_mean": 0.362,
+        "batch_size": 256,
+        "batch_throughput_images_per_s": 8439.2,
+        "batch_ms_per_image": 0.1185,
+        "cpu_threads": 4,
+        "machine": "x86_64"
+      }
+    ],
+    "sanitized": [
+      {
+        "single_image_ms_median": 0.225,
+        "single_image_ms_p95": 0.263,
+        "single_image_ms_mean": 0.229,
+        "batch_size": 256,
+        "batch_throughput_images_per_s": 8095.8,
+        "batch_ms_per_image": 0.1235,
+        "cpu_threads": 4,
+        "machine": "x86_64"
+      },
+      {
+        "single_image_ms_median": 0.228,
+        "single_image_ms_p95": 0.308,
+        "single_image_ms_mean": 0.235,
+        "batch_size": 256,
+        "batch_throughput_images_per_s": 9739.9,
+        "batch_ms_per_image": 0.1027,
+        "cpu_threads": 4,
+        "machine": "x86_64"
+      },
+      {
+        "single_image_ms_median": 0.236,
+        "single_image_ms_p95": 0.443,
+        "single_image_ms_mean": 0.274,
+        "batch_size": 256,
+        "batch_throughput_images_per_s": 8658.2,
+        "batch_ms_per_image": 0.1155,
+        "cpu_threads": 4,
+        "machine": "x86_64"
+      },
+      {
+        "single_image_ms_median": 0.226,
+        "single_image_ms_p95": 0.289,
+        "single_image_ms_mean": 0.233,
+        "batch_size": 256,
+        "batch_throughput_images_per_s": 9680.1,
+        "batch_ms_per_image": 0.1033,
+        "cpu_threads": 4,
+        "machine": "x86_64"
+      },
+      {
+        "single_image_ms_median": 0.222,
+        "single_image_ms_p95": 0.25,
+        "single_image_ms_mean": 0.225,
+        "batch_size": 256,
+        "batch_throughput_images_per_s": 8800.9,
+        "batch_ms_per_image": 0.1136,
+        "cpu_threads": 4,
+        "machine": "x86_64"
+      }
+    ],
+    "adv_static": [
+      {
+        "single_image_ms_median": 0.224,
+        "single_image_ms_p95": 0.29,
+        "single_image_ms_mean": 0.232,
+        "batch_size": 256,
+        "batch_throughput_images_per_s": 9239.8,
+        "batch_ms_per_image": 0.1082,
+        "cpu_threads": 4,
+        "machine": "x86_64"
+      },
+      {
+        "single_image_ms_median": 0.223,
+        "single_image_ms_p95": 0.246,
+        "single_image_ms_mean": 0.224,
+        "batch_size": 256,
+        "batch_throughput_images_per_s": 9446.1,
+        "batch_ms_per_image": 0.1059,
+        "cpu_threads": 4,
+        "machine": "x86_64"
+      },
+      {
+        "single_image_ms_median": 0.259,
+        "single_image_ms_p95": 0.333,
+        "single_image_ms_mean": 0.267,
+        "batch_size": 256,
+        "batch_throughput_images_per_s": 9084.5,
+        "batch_ms_per_image": 0.1101,
+        "cpu_threads": 4,
+        "machine": "x86_64"
+      },
+      {
+        "single_image_ms_median": 0.248,
+        "single_image_ms_p95": 0.437,
+        "single_image_ms_mean": 0.279,
+        "batch_size": 256,
+        "batch_throughput_images_per_s": 9223.3,
+        "batch_ms_per_image": 0.1084,
+        "cpu_threads": 4,
+        "machine": "x86_64"
+      },
+      {
+        "single_image_ms_median": 0.226,
+        "single_image_ms_p95": 0.271,
+        "single_image_ms_mean": 0.231,
+        "batch_size": 256,
+        "batch_throughput_images_per_s": 9468.5,
+        "batch_ms_per_image": 0.1056,
+        "cpu_threads": 4,
+        "machine": "x86_64"
+      }
+    ],
+    "adv_pgd": [
+      {
+        "single_image_ms_median": 0.224,
+        "single_image_ms_p95": 0.248,
+        "single_image_ms_mean": 0.225,
+        "batch_size": 256,
+        "batch_throughput_images_per_s": 8877.8,
+        "batch_ms_per_image": 0.1126,
+        "cpu_threads": 4,
+        "machine": "x86_64"
+      },
+      {
+        "single_image_ms_median": 0.225,
+        "single_image_ms_p95": 0.279,
+        "single_image_ms_mean": 0.232,
+        "batch_size": 256,
+        "batch_throughput_images_per_s": 9888.8,
+        "batch_ms_per_image": 0.1011,
+        "cpu_threads": 4,
+        "machine": "x86_64"
+      },
+      {
+        "single_image_ms_median": 0.232,
+        "single_image_ms_p95": 0.375,
+        "single_image_ms_mean": 0.254,
+        "batch_size": 256,
+        "batch_throughput_images_per_s": 8218.6,
+        "batch_ms_per_image": 0.1217,
+        "cpu_threads": 4,
+        "machine": "x86_64"
+      },
+      {
+        "single_image_ms_median": 0.225,
+        "single_image_ms_p95": 0.276,
+        "single_image_ms_mean": 0.231,
+        "batch_size": 256,
+        "batch_throughput_images_per_s": 9212.3,
+        "batch_ms_per_image": 0.1086,
+        "cpu_threads": 4,
+        "machine": "x86_64"
+      },
+      {
+        "single_image_ms_median": 0.23,
+        "single_image_ms_p95": 0.331,
+        "single_image_ms_mean": 0.248,
+        "batch_size": 256,
+        "batch_throughput_images_per_s": 8187.4,
+        "batch_ms_per_image": 0.1221,
+        "cpu_threads": 4,
+        "machine": "x86_64"
+      }
+    ]
+  }
+}

@@ -1,0 +1,55 @@
+{
+  "config": {
+    "mode": "static",
+    "eps": 0.3,
+    "steps": 7,
+    "ratio": 0.5,
+    "epochs": 5,
+    "seed": 42,
+    "baseline": "models/baseline.pt"
+  },
+  "training_seconds": 164.1,
+  "model_sha256": "6a42cfe1482b593850e22f48e5f697477260f4e5d937fbc720b57d46091d11ee",
+  "history": [
+    {
+      "epoch": 1,
+      "train_loss": 0.2286181774648753,
+      "train_acc": 0.9302818181818182,
+      "val_loss": 0.0927120376586914,
+      "val_acc": 0.9702,
+      "seconds": 29.8
+    },
+    {
+      "epoch": 2,
+      "train_loss": 0.06261416770436547,
+      "train_acc": 0.9805090909090909,
+      "val_loss": 0.05491351013183594,
+      "val_acc": 0.9832,
+      "seconds": 28.3
+    },
+    {
+      "epoch": 3,
+      "train_loss": 0.0400634008969773,
+      "train_acc": 0.9876818181818182,
+      "val_loss": 0.04749493217468262,
+      "val_acc": 0.9854,
+      "seconds": 27.8
+    },
+    {
+      "epoch": 4,
+      "train_loss": 0.02925622179000215,
+      "train_acc": 0.9909454545454546,
+      "val_loss": 0.04061199073791504,
+      "val_acc": 0.9864,
+      "seconds": 28.0
+    },
+    {
+      "epoch": 5,
+      "train_loss": 0.024195658312467012,
+      "train_acc": 0.9922181818181818,
+      "val_loss": 0.04666767959594727,
+      "val_acc": 0.9864,
+      "seconds": 29.6
+    }
+  ]
+}

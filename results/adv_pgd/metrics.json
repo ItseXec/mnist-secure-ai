@@ -1,0 +1,195 @@
+{
+  "tag": "adv_pgd",
+  "dataset": "clean MNIST test set",
+  "samples": 10000,
+  "accuracy": 0.9854,
+  "error_rate": 0.0146,
+  "loss": 0.0451,
+  "macro_precision": 0.9854,
+  "macro_recall": 0.9852,
+  "macro_f1": 0.9853,
+  "per_class": {
+    "0": {
+      "precision": 0.9888,
+      "recall": 0.9949,
+      "f1-score": 0.9919
+    },
+    "1": {
+      "precision": 0.9895,
+      "recall": 0.9956,
+      "f1-score": 0.9925
+    },
+    "2": {
+      "precision": 0.9932,
+      "recall": 0.9855,
+      "f1-score": 0.9893
+    },
+    "3": {
+      "precision": 0.9794,
+      "recall": 0.9901,
+      "f1-score": 0.9847
+    },
+    "4": {
+      "precision": 0.9907,
+      "recall": 0.9735,
+      "f1-score": 0.982
+    },
+    "5": {
+      "precision": 0.9865,
+      "recall": 0.9821,
+      "f1-score": 0.9843
+    },
+    "6": {
+      "precision": 0.9854,
+      "recall": 0.9896,
+      "f1-score": 0.9875
+    },
+    "7": {
+      "precision": 0.9788,
+      "recall": 0.9893,
+      "f1-score": 0.984
+    },
+    "8": {
+      "precision": 0.9846,
+      "recall": 0.9856,
+      "f1-score": 0.9851
+    },
+    "9": {
+      "precision": 0.977,
+      "recall": 0.9663,
+      "f1-score": 0.9716
+    }
+  },
+  "confusion_matrix": [
+    [
+      975,
+      1,
+      0,
+      0,
+      0,
+      1,
+      2,
+      1,
+      0,
+      0
+    ],
+    [
+      0,
+      1130,
+      1,
+      1,
+      0,
+      0,
+      2,
+      0,
+      1,
+      0
+    ],
+    [
+      1,
+      1,
+      1017,
+      2,
+      1,
+      0,
+      0,
+      7,
+      3,
+      0
+    ],
+    [
+      0,
+      0,
+      1,
+      1000,
+      0,
+      3,
+      0,
+      4,
+      2,
+      0
+    ],
+    [
+      2,
+      0,
+      0,
+      0,
+      956,
+      0,
+      5,
+      1,
+      1,
+      17
+    ],
+    [
+      2,
+      0,
+      0,
+      5,
+      0,
+      876,
+      4,
+      1,
+      4,
+      0
+    ],
+    [
+      3,
+      2,
+      0,
+      0,
+      1,
+      2,
+      948,
+      0,
+      2,
+      0
+    ],
+    [
+      0,
+      3,
+      4,
+      2,
+      0,
+      0,
+      0,
+      1017,
+      0,
+      2
+    ],
+    [
+      2,
+      0,
+      1,
+      4,
+      0,
+      1,
+      0,
+      2,
+      960,
+      4
+    ],
+    [
+      1,
+      5,
+      0,
+      7,
+      7,
+      5,
+      1,
+      6,
+      2,
+      975
+    ]
+  ],
+  "inference_time": {
+    "single_image_ms_median": 0.416,
+    "single_image_ms_p95": 0.448,
+    "single_image_ms_mean": 0.341,
+    "batch_size": 256,
+    "batch_throughput_images_per_s": 5684.6,
+    "batch_ms_per_image": 0.1759,
+    "cpu_threads": 4,
+    "machine": "x86_64"
+  }
+}
