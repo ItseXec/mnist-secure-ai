@@ -183,12 +183,12 @@
     ]
   ],
   "inference_time": {
-    "single_image_ms_median": 0.229,
-    "single_image_ms_p95": 0.247,
-    "single_image_ms_mean": 0.23,
+    "single_image_ms_median": 0.37,
+    "single_image_ms_p95": 0.42,
+    "single_image_ms_mean": 0.336,
     "batch_size": 256,
-    "batch_throughput_images_per_s": 7764.0,
-    "batch_ms_per_image": 0.1288,
+    "batch_throughput_images_per_s": 6973.1,
+    "batch_ms_per_image": 0.1434,
     "cpu_threads": 4,
     "machine": "x86_64"
   }

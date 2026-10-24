@@ -23,5 +23,5 @@ def results_dir(tag):
 
 
 def save_json(obj, path):
-    with open(path, "w") as fh:
+    with open(path, "w", encoding="utf-8") as fh:
         json.dump(obj, fh, indent=2)

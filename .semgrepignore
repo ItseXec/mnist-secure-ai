@@ -1,0 +1,8 @@
+# Replaces Semgrep's built-in ignore list, which skips tests/ by default.
+# The tests deliberately rebuild the v1 attack, so they must be scanned too.
+venv/
+data/
+models/
+datasets/
+results/
+scans/

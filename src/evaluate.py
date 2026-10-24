@@ -21,14 +21,9 @@ import torch  # noqa: E402
 from sklearn.metrics import classification_report, confusion_matrix  # noqa: E402
 from torch import nn  # noqa: E402
 
-from .data import load_mnist  # noqa: E402
+from .data import load_dataset, load_mnist  # noqa: E402
+from .model import load_model  # noqa: E402
 from .utils import results_dir, save_json  # noqa: E402
-
-
-def load_model(path):
-    model = torch.load(path, weights_only=False)
-    model.eval()
-    return model
 
 
 def predict(model, x, batch_size=1000):
@@ -119,7 +114,7 @@ def evaluate(model, x, y, tag, timing=True, label=None):
     np.savetxt(os.path.join(out, "confusion_matrix.csv"), cm, fmt="%d", delimiter=",")
     plot_confusion(cm, os.path.join(out, "confusion_matrix.png"),
                    f"{tag}: accuracy {accuracy:.2%}")
-    with open(os.path.join(out, "classification_report.txt"), "w") as fh:
+    with open(os.path.join(out, "classification_report.txt"), "w", encoding="utf-8") as fh:
         fh.write(classification_report(y, preds, digits=4, zero_division=0))
     return metrics
 
@@ -146,8 +141,8 @@ def main():
 
     model = load_model(args.model)
     if args.data:
-        arrays = np.load(args.data, allow_pickle=True)
-        x, y, label = arrays["x"], arrays["y"], os.path.basename(args.data)
+        x, y, _extra = load_dataset(args.data)
+        label = os.path.basename(args.data)
     else:
         _, _, x, y = load_mnist()
         label = None

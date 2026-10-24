@@ -11,13 +11,12 @@ import time
 import matplotlib
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt  # noqa: E402
-import numpy as np  # noqa: E402
 import torch  # noqa: E402
 from torch import nn  # noqa: E402
 from torch.utils.data import DataLoader, TensorDataset  # noqa: E402
 
 from .data import load_mnist, train_val_split  # noqa: E402
-from .model import build_model, count_parameters  # noqa: E402
+from .model import build_model, count_parameters, save_model  # noqa: E402
 from .utils import ROOT, results_dir, save_json, set_seed  # noqa: E402
 
 
@@ -39,7 +38,8 @@ def fit(model, x_train, y_train, x_val, y_val, epochs=5, batch_size=128, lr=1e-3
     """Train with Adam and cross-entropy. Returns per-epoch history."""
     generator = torch.Generator().manual_seed(seed)
     loader = DataLoader(TensorDataset(torch.from_numpy(x_train), torch.from_numpy(y_train)),
-                        batch_size=batch_size, shuffle=True, generator=generator)
+                        batch_size=batch_size, shuffle=True, generator=generator,
+                        pin_memory=torch.cuda.is_available())
     optimiser = torch.optim.Adam(model.parameters(), lr=lr)
     loss_fn = nn.CrossEntropyLoss()
     history = []
@@ -105,15 +105,16 @@ def main():
     history = fit(model, x_tr, y_tr, x_val, y_val, args.epochs, args.batch_size, args.lr, args.seed)
     total = time.perf_counter() - start
 
-    os.makedirs(os.path.join(ROOT, "models"), exist_ok=True)
     model_path = os.path.join(ROOT, "models", f"{args.tag}.pt")
-    torch.save(model, model_path)
+    digest = save_model(model, model_path)
 
     out = results_dir(args.tag)
-    save_json({"config": vars(args), "training_seconds": round(total, 1), "history": history},
+    save_json({"config": vars(args), "training_seconds": round(total, 1),
+               "model_sha256": digest, "history": history},
               os.path.join(out, "training_history.json"))
     plot_history(history, os.path.join(out, "training_curve.png"), f"Training: {args.tag}")
     print(f"Saved {model_path} (training took {total:.0f}s)")
+    print(f"SHA-256 {digest}")
 
 
 if __name__ == "__main__":

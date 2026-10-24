@@ -2,9 +2,10 @@ adversarial-robustness-toolbox==1.20.1
 cloudpickle==3.1.2
 contourpy==1.4.0
 cycler==0.12.1
-filelock==3.32.3
+filelock==4.2.4
 fonttools==4.67.0
 fsspec==2026.7.0
+iniconfig==2.3.1
 Jinja2==3.1.6
 joblib==1.6.0
 kiwisolver==1.5.1
@@ -16,11 +17,14 @@ networkx==3.6.1
 numpy==2.5.3
 packaging==26.3
 pillow==13.0.0
+pluggy==1.7.0
+Pygments==2.21.0
 pyparsing==3.3.3
+pytest==9.1.1
 python-dateutil==3.0.0
 scikit-learn==1.9.1
 scipy==1.18.1
-setuptools==78.1.0
+setuptools==84.2.1
 six==1.17.0
 sympy==1.14.0
 threadpoolctl==3.7.0
