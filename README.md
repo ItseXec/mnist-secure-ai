@@ -1,6 +1,6 @@
 # Secure AI Systems: Red and Blue Teaming an MNIST Classifier
 
-Secure Software Engineering, IIT Hyderabad.
+Secure Software Engineering
 
 A convolutional neural network (PyTorch) that classifies handwritten digits
 from MNIST, then attacked (red team) and defended (blue team).
