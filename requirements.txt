@@ -1,0 +1,7 @@
+# PyTorch is installed separately, from the CPU-only index (about 200 MB
+# instead of several GB of CUDA libraries):
+#   pip install torch --index-url https://download.pytorch.org/whl/cpu
+numpy==2.5.3
+scikit-learn==1.9.1
+matplotlib==3.11.2
+adversarial-robustness-toolbox==1.20.1
