@@ -158,3 +158,9 @@ scanner finding to its fix and test.
 ## Verifying the published results
 
 `python -m scripts.verify_artifacts` loads every committed model and dataset through the checksum-verified loaders, measures the report's headline numbers again and compares them with the figures recorded in `results/`. It writes `results/verification.md` and exits with an error if any number differs.
+
+## Continuous security checks
+
+![Security checks](https://github.com/ItseXec/mnist-secure-ai/actions/workflows/security.yml/badge.svg)
+
+`.github/workflows/security.yml` runs Bandit, Semgrep (`p/python`, `p/trailofbits`) and the full test suite on every push, so a change that reintroduces a SAST finding fails automatically.

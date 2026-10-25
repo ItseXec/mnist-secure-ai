@@ -1,0 +1,45 @@
+name: Security checks
+
+# Runs the SAST scans and the security test suite on every push, so a change
+# that reintroduces a finding (for example an unsafe torch.load) is caught
+# automatically instead of at the next manual scan.
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  sast:
+    name: SAST (Bandit, Semgrep)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install scanners (pinned to the versions used in docs/SAST.md)
+        run: pip install bandit==1.9.4 semgrep==1.182.1
+      - name: Bandit, application code
+        run: bandit -r src attacks defenses scripts
+      - name: Bandit, tests (assert is how pytest checks results)
+        run: bandit -r tests -s B101
+      - name: Semgrep, p/python and p/trailofbits
+        run: semgrep scan --config p/python --config p/trailofbits --metrics=off --error src attacks defenses scripts tests
+
+  tests:
+    name: Security and integrity tests
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install PyTorch (CPU) and pinned requirements
+        run: |
+          pip install torch==2.14.1 --index-url https://download.pytorch.org/whl/cpu
+          pip install -r requirements.txt -r requirements-dev.txt
+      - name: Run tests
+        run: python -m pytest tests -v
