@@ -6,6 +6,15 @@ A convolutional neural network (PyTorch) classifies handwritten digits from
 MNIST. It is threat-modelled, scanned with SAST tools, attacked with two OWASP
 Machine Learning Top 10 attacks, and defended.
 
+## Team and contributions
+
+| Member | Contributions |
+|--------|---------------|
+| Priya Agrawal | Tasks 1-3: CNN training and evaluation, performance metrics, threat model (STRIDE, OWASP ML Top 10, attacker model, LINDDUN). Documentation: report and README. Integrity tests, `scripts/verify_artifacts.py` and the security-checks workflow |
+| Satyasheel Singh | Tasks 4-7: SAST scans and fixes, red-team attacks (evasion and backdoor poisoning), retesting with adversarial and poisoned data, blue-team defenses and the comparison with the baseline |
+
+## Where each task is
+
 | Assignment task | Where |
 |-----------------|-------|
 | 1-2 Train the CNN and report performance | `src/`, `results/baseline/` |
@@ -144,16 +153,6 @@ digests.
 
 Every fix has a test in `tests/test_security.py`; `docs/SAST.md` maps each
 scanner finding to its fix and test.
-
-## Verifying the published results
-
-`python -m scripts.verify_artifacts` loads every committed model and dataset through the checksum-verified loaders, measures the report's headline numbers again and compares them with the figures recorded in `results/`. It writes `results/verification.md` and exits with an error if any number differs.
-
-## Continuous security checks
-
-![Security checks](https://github.com/ItseXec/mnist-secure-ai/actions/workflows/security.yml/badge.svg)
-
-`.github/workflows/security.yml` runs Bandit, Semgrep (`p/python`, `p/trailofbits`) and the full test suite on every push, so a change that reintroduces a SAST finding fails automatically.
 
 ## Verifying the published results
 
